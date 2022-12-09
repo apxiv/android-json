@@ -42,7 +42,15 @@ fun EmployeeItem(employee: Employee) {
                         .padding(4.dp)
                         .drawBehind {
                             drawCircle(
-                                color = Color.Yellow,
+                                color = when (employee.listId) {
+                                    1 -> Color.Yellow
+                                    2 -> Color.Green
+                                    3 -> Color.Cyan
+                                    4 -> Color.LightGray
+                                    else -> {
+                                        Color.White
+                                    }
+                                },
                                 radius = this.size.minDimension
                             )
                         }

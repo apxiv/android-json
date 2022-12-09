@@ -36,11 +36,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun EmployeeList(employeeList: List<Employee>) {
     LazyColumn {
-        val newList = employeeList.filterNot { it.name.isNullOrEmpty() }.sortedWith(compareBy<Employee> { it.listId }.thenBy { it.name?.substringAfter("Item ")
-            ?.toInt() })
-        Log.d("list works?", "$employeeList")
-        //Log.d("new list works?", "$newList")
-        //val sortNewList = newList.sortedWith(compareBy<Employee> { it.listId }.thenBy { it.name?.substringAfter("Item ")?.toInt() })
+        val newList = employeeList.filterNot { it.name.isNullOrEmpty() }
+            .sortedWith(compareBy<Employee> { it.listId }.thenBy {
+                it.name?.substringAfter("Item ")
+                    ?.toInt()
+            })
+        //Log.d("list works?", "$employeeList")
         itemsIndexed(items = newList) { _, item ->
             EmployeeItem(employee = item)
         }
