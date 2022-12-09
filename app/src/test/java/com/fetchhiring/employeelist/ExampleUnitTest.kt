@@ -1,17 +1,18 @@
 package com.fetchhiring.employeelist
 
+import com.fetchhiring.employeelist.network.ApiService
 import org.junit.Test
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-import org.junit.Assert.*
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
-class ExampleUnitTest {
+class ApiServiceTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testValidInterface() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://fetch-hiring.s3.amazonaws.com/")
+            .addConverterFactory(GsonConverterFactory.create()) // Will throw an exception if interface is not valid
+            .build()
+        retrofit.create(ApiService::class.java)
     }
 }

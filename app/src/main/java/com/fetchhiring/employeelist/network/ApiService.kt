@@ -12,11 +12,12 @@ interface ApiService {
     //get an instance of the API Service
     // companion object can be called without having the instance of the class
     companion object {
+        private const val BASE_URL = "https://fetch-hiring.s3.amazonaws.com/"
         private var apiService: ApiService? = null
         fun getInstance(): ApiService {
             if (apiService == null) {
                 apiService = Retrofit.Builder()
-                    .baseUrl("https://fetch-hiring.s3.amazonaws.com/")
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build().create(ApiService::class.java)
             }

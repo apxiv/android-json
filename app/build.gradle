@@ -66,4 +66,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     // material icons
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    // retrofit
+    testImplementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    // lib for parsing JSON api responses
+    testImplementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 }
